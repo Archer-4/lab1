@@ -58,6 +58,7 @@ struct Shape {
 struct Particle {
 	Shape s;
 	Vec velocity;
+    int RGB[3];
 };
 
 class Global {
@@ -192,6 +193,9 @@ void makeParticle(int x, int y)
 		p->s.center.y = y+rand()%20;
 		p->velocity.y = -4.0;
 		p->velocity.x =  1.0;
+        p->RGB[0] = 0;
+        p->RGB[1] = rand()%255;
+        p->RGB[2] = 255;
 		++g.n;
 }
 
@@ -301,7 +305,8 @@ void render()
 	//
 	//draw a box
 	Shape *s;
-	glColor3ub(90,140,90);
+	Particle *p;
+    glColor3ub(90,140,90);
 	s = &g.box;
 	glPushMatrix();
 	glTranslatef(s->center.x, s->center.y, s->center.z);
@@ -319,7 +324,8 @@ void render()
 	//Draw the particle here
 	for (int i = 0; i<g.n; i++){
 		glPushMatrix();
-		glColor3ub(rand()%255,rand()%255,rand()%255);
+		p = &g.particle[i];
+        glColor3ub(p->RGB[0], p->RGB[1], p->RGB[2]);
 		Vec *c = &g.particle[i].s.center;
 		w =
 		h = 2;
