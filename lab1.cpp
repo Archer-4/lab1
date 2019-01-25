@@ -2,6 +2,10 @@
 //modified by: Nicholas Jackson
 //date: Thu Jan 24 2019
 //
+//TO DO
+//Set up array for boxes
+//Set up multiple boxes
+//Set up text render
 //3350 Spring 2018 Lab-1
 //This program demonstrates the use of OpenGL and XWindows
 //
